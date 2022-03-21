@@ -2,10 +2,8 @@ import React, { useEffect , useState } from 'react';
 import axios from '../api/axios';
 import MovieModal from './MovieModal';
 import './Row.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-
-SwiperCore.use([Navigation, Pagination, Autoplay])
+import { Swiper, SwiperSlide} from 'swiper/react';
+import "swiper/css";
 
 
 const Row = ({ isLargeRow, title, id, fetchUrl}) => {
@@ -31,22 +29,26 @@ const Row = ({ isLargeRow, title, id, fetchUrl}) => {
     
     return (
         <section  className="row">
-            <h2>!! {title}</h2>
+            <h2>{title}</h2>
             <div className='slider'>
             
-                {/* <div className='slider__arrow-left'>
-                    <span className='arrow'
-                        onClick={()=> {
-                            document.getElementById(id).scrollLeft -= window.innerWidth - 80
-                        }}
-                    >{"<"}</span>
-                </div> */}
+                
                 <Swiper 
                     navigation
                     id={id} 
                     className="row__posters"
+                    slidesPerView={4}
+                    spaceBetween={10}
+                    breakpoints={{
+                        768:{
+                            slidesPerView:5
+                        },
+                        1024:{
+                            slidesPerView:6
+                        }
+                    }}
                 >
-                    {movies.map(movie =>(
+                    {movies.map(movie =>
                         <SwiperSlide 
                             key={movie.id}
                         >
@@ -58,7 +60,7 @@ const Row = ({ isLargeRow, title, id, fetchUrl}) => {
                                 onClick={()=> handelClick(movie)}
                             />
                         </SwiperSlide>
-                    ))}
+                    )}
                     
                 
                 </Swiper>
