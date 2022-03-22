@@ -22,6 +22,13 @@
     left:40px;
     width:80px;
     object-fit:contain;
+    transition: transform 450ms;
+    cursor: pointer;
+}
+
+.nav_logo:hover{
+    transform: scale(1.2);
+    opacity: 1;
 }
 
 .nav_avatar{
@@ -29,4 +36,15 @@
     right:40px;
     width:30px;
     object-fit: contain;
+}
+
+.nav_input{
+    position:fixed;
+    left:50%;
+    transform:translate(-50%,0);
+    background-color: #000000c7;
+    border-radius: 5px;
+    color: white;
+    padding:5px;
+    border:none;
 }

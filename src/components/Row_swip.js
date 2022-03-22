@@ -3,7 +3,10 @@ import axios from '../api/axios';
 import MovieModal from './MovieModal';
 import './Row.css';
 import { Swiper, SwiperSlide} from 'swiper/react';
+import { Navigation } from "swiper";
+
 import "swiper/css";
+import "swiper/css/navigation";
 
 
 const Row = ({ isLargeRow, title, id, fetchUrl}) => {
@@ -13,7 +16,7 @@ const Row = ({ isLargeRow, title, id, fetchUrl}) => {
 
     useEffect(() => {
         fetchMovieData();
-    }, [])
+    })
 
     const fetchMovieData = async() => {
         const request = await axios.get(fetchUrl);
@@ -32,19 +35,19 @@ const Row = ({ isLargeRow, title, id, fetchUrl}) => {
             <h2>{title}</h2>
             <div className='slider'>
             
-                
                 <Swiper 
-                    navigation
+                    navigation={true}
+                    modules={[Navigation]}
                     id={id} 
                     className="row__posters"
-                    slidesPerView={4}
+                    slidesPerView={3}
                     spaceBetween={10}
                     breakpoints={{
                         768:{
-                            slidesPerView:5
+                            slidesPerView:4
                         },
                         1024:{
-                            slidesPerView:6
+                            slidesPerView:5
                         }
                     }}
                 >

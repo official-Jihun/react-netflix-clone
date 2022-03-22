@@ -137,3 +137,41 @@
       max-height: 280px;
     }
   }
+
+
+.swiper-button-next::before,
+.swiper-button-prev::before {
+  background-clip: content-box;
+  padding: 20px 0;
+  box-sizing: border-box;
+  transition: 400ms all ease-in-out;
+  cursor: pointer;
+  width: 80px;
+  z-index: 3000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  color: #fff
+}
+.swiper-button-prev
+.swiper-button-next {
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.5);
+  right:10px;
+  padding: 30px;
+  color: #000 !important;
+  fill: black !important;
+  stroke: black !important;
+  z-index: 2000;
+  transition: 400ms all ease-in-out;
+}
+.swiper-button-prev:hover
+.swiper-button-next:hover {
+  transition: 400ms all ease-in-out;
+  transform: scale(1.5);
+}
