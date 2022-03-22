@@ -1,5 +1,6 @@
 # NETFLIX Clone with React
-
+## github page 배포 링크 
+https://official-jihun.github.io/react-netflix-clone/
 ## 구현 내용
 - 전반적인 UI/UX 및 hovering Event
 - Navigation Bar
