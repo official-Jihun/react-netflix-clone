@@ -33,8 +33,8 @@ export default function DetailPage({}) {
       </p>
 
       <h2 className='modal__title'>{movie.title? movie.title : movie.name}</h2>
-      <p className='modal__overview'> 평점 : {movie.vote_average}</p>
-      <p className='modal__overview'>{movie.overview}</p>
+      <p className='modal_overview'> 평점 : {movie.vote_average}</p>
+      <p className='modal_overview'>{movie.overview}</p>
       
     </div>
   )

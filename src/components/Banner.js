@@ -29,15 +29,22 @@ export default function Banner() {
         const request = await axios.get(requests.fetchNowPlaying);
         
         // 여러 영화 중 영화 하나의 ID를 가져오기
-        const movieId = request.data.results[
-            Math.floor(Math.random() * request.data.results.length)
-        ].id;
+        while(true){
+            let tmp = Math.floor(Math.random() * request.data.results.length);
+        
+            // console.log('movie', request.data.results[tmp])
+            const movieId = request.data.results[tmp].id;
+    
+            //특정 영화의 더 상세한 정보를 가져오기(비디오 정보도 포함)
+            const {data: movieDetail} = await axios.get(`movie/${movieId}`, {
+                params: {append_to_response:"videos"},
+            });
+            setMovie(movieDetail);
+            // console.log('movie', movieDetail)
+            // console.log('movie length', movieDetail.videos.results.length)
 
-        //특정 영화의 더 상세한 정보를 가져오기(비디오 정보도 포함)
-        const {data: movieDetail} = await axios.get(`movie/${movieId}`, {
-            params: {append_to_response:"videos"},
-        });
-        setMovie(movieDetail);
+            if(movieDetail.videos.results.length != 0 && request.data.results[tmp].overview != "") break;
+        }
     };
     
     const truncate = (str, n) => {
