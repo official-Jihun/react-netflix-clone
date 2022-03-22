@@ -37,6 +37,35 @@
       border-radius: 4px !important;
     }
   }
+
+  @media (max-width: 500px) {
+    .banner__contents {
+      width: min-content !important;
+      padding-left: 1.8rem;
+      margin-left: 0px !important;
+    }
+    .banner__description {
+      font-size: 0.6rem !important;
+      width: auto !important;
+    }
+    .info {
+      text-align: start;
+      padding-right: 1.2rem;
+    }
+    .space {
+      margin-left: 4px;
+    }
+    .banner__button {
+      font-size: 0.6rem !important;
+      border-radius: 2px !important;
+    }
+    .banner__title {
+      font-size: 2rem;
+      font-weight: 800;
+      padding-bottom: 0.5rem;
+    }
+  }
+
   .banner__contents {
     margin-left: 40px;
     padding-top: 140px;
