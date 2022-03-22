@@ -1,17 +1,26 @@
 import axios from '../api/axios';
 import requests from '../api/requests'
 import React, { useEffect, useState } from 'react';
+import MovieModal from './MovieModal';
 import "./Banner.css"
 import styled from 'styled-components';
 export default function Banner() {
 
     const [isClicked, setIsClicked] = useState(false);
     const [movie, setMovie] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [movieSelected, setMovieSelected] = useState({})
+
+
 
     useEffect(() => {
         fetchData();
     }, []);
 
+    const handelClick = (movie) =>{
+        setModalOpen(true);
+        setMovieSelected(movie);
+    }
 
 
     const fetchData = async () =>{
@@ -52,17 +61,27 @@ export default function Banner() {
     
                     <div className='banner__buttons'>
                         <button className='banner__button play' 
-                        onClick={()=>setIsClicked(true)}>Play</button>
-                        <button className='banner__button info'>More Information</button>
+                        onClick={()=>setIsClicked(true)}>
+                            Play
+                        </button>
+                        <button className='banner__button info'
+                        onClick={()=> handelClick(movie)}>
+                            More Information
+                        </button>
                     </div>
     
                     <h1 className='banner__description'>
                         {truncate(movie?.overview,100)}
                     </h1>
                 </div>
+                {
+                    modalOpen && (
+                        <MovieModal{...movieSelected} setModalOpen={setModalOpen}/>
+                    )
+                }
     
             </header>
-    
+                        
         );
     }
     else{
@@ -78,6 +97,10 @@ export default function Banner() {
                         allow="autoplay; fullscreen"
                         allowfullscreen
                 ></Iframe>
+
+                <ModalClose onClick={()=>setIsClicked(false)}>
+                    X
+                </ModalClose>
             </HomeContainer>
           </Container>
         );
@@ -90,7 +113,7 @@ export default function Banner() {
 const Iframe = styled.iframe`
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 20;
   opacity: 0.65;
   border: none;
   &:after {
@@ -117,3 +140,18 @@ const HomeContainer = styled.div`
   height: 100%;
 `;
 
+const ModalClose = styled.button`
+    display:block;
+    position: absolute;
+    right: 5vw;
+    top: 5vh;;
+    border-radius: 50%;
+    height:5vw;
+    width:5vw;
+    font-size:2.5vw;
+    cursor: pointer;
+    z-index: 1000;
+    color: #000000c7;
+    aline-items:center;
+    border:1px white;
+`

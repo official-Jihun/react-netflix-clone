@@ -3,4 +3,5 @@
 }
 .app {
   background: #111;
+  overflow-x: hidden;
 }
