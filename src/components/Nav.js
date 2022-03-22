@@ -16,6 +16,8 @@ export default function Nav() {
     const handelGoHome = () => {
         navigate('/');
         window.location.reload();
+        window.scrollTo(0, 0);
+        setSearchValue("");
     }
 
 
