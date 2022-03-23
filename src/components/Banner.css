@@ -101,17 +101,16 @@
   .banner__button {
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    align-items: center;
     text-align: center;
+    align-items: center;
     cursor: pointer;
     outline: none;
     border: none;
     font-size: 1rem;
     font-weight: 700;
     border-radius: 0.2vw;
-    padding: 0.4rem 1.8rem 0.4rem 1rem;
-    margin-right: 1rem;
+    padding: 0.5rem 2rem;
+    margin-right : 1rem;
   }
   .banner__button:hover {
     color: #000;
